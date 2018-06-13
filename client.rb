@@ -1,5 +1,7 @@
+#!/usr/bin/env ruby
 require 'socket'        # Sockets are in standard library
-#require 'subprocess'
+require 'open3'
+require 'pty'
 
 hostname = 'localhost'
 port = 2000
@@ -13,8 +15,16 @@ while line = s.gets     # Read lines from the socket
    #File.write('./testFile.rb', line)
    f.puts(line)
 end
-sys = system ('start ruby "myfile.rb"', out: $stdout, err: :out)
-#sys = %x{start ruby "myfile.rb}
-puts(sys)
-puts(out)
+
+begin
+  PTY.spawn( "ruby myfile.rb" ) do |stdout, stdin, pid|
+    begin
+      stdout.each { |line| print line }
+    rescue Errno::EIO
+    end
+  end
+rescue PTY::ChildExited
+  puts "The child process exited!"
+end
+
 s.close                 # Close the socket when done
