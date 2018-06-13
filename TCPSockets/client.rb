@@ -24,15 +24,13 @@ process = shell.transact do
 	ruby('./myfile.rb')
 end
 
+syntax = system('ruby -c myfile.rb')
+
+f = open('myfile.rb', 'w') 
+
 output = process.to_s
 output.split("\n").each do |line|
   	puts "[parent] output: #{line}"
-	if "#{line}" == "[child] works"
-		syntax = "Syntax ok"
-
-	elsif "#{line}" == "[child] error"
-		syntax = "Syntax error"
-	end
 end
 
 s.close
@@ -40,4 +38,3 @@ s.close
 s = TCPSocket.open(hostname, port)
 s.puts(syntax)
 s.close
-

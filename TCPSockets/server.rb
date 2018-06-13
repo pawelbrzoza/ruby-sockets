@@ -2,7 +2,8 @@ require 'socket'                # Get sockets from stdlib
 require 'json'
 
 server = TCPServer.open(2000)   # Socket to listen on port 2000
-content = File.read('program.rb')
+content = File.read('simpleNumbers.rb')
+#content = File.read('simpleNumbers.rb')
 
 hostname = 'localhost'
 port = 2000
