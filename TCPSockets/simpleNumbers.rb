@@ -2,19 +2,25 @@
 
 class SimpleNumber
 
-	def initialize(num)
-		raise unless num.is_a?(Numeric)
-			@x = num
-      add(num)
-      multiply(num)
+	 def initialize(num1, num2)
+		  raise unless num1.is_a?(Numeric)
+			@x = num1
+      raise unless num2.is_a?(Numeric)
+      @y = num2
   	end
 
-  	def add(y)
-    	puts(@x + y)
+    def start())
+      add()
+      multiply()
+      return add(), multiply()
+    end
+
+  	def add()
+    	return @x + @y
   	end
 
-  	def multiply(y)
-    	puts (@x * y)
+  	def multiply()
+    	return @x * @y
   	end
   	
 end
