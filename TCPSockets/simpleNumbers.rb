@@ -9,7 +9,7 @@ class SimpleNumber
       @y = num2
   	end
 
-    def start())
+    def start()
       add()
       multiply()
       return add(), multiply()
