@@ -1,0 +1,4 @@
+gem install websocket-eventmachine-server
+gem install websocket-client-simple
+gem install eventmachine
+gem install ruby-lint
